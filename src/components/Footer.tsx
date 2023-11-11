@@ -1,49 +1,57 @@
-import { Card, CardFooter, Image, Button } from "@nextui-org/react";
+import { Card, CardFooter, Image } from "@nextui-org/react";
 import Link from "next/link";
+import { projects } from "@/data/projects";
+
+interface Author {
+  id: number;
+  username: string;
+}
+
+const getUniqueAuthors = (projects: any[]): Author[] => {
+  const authorsMap: Map<string, Author> = new Map();
+
+  projects.forEach((project) => {
+    const username = project.author;
+    if (username && !authorsMap.has(username)) {
+      authorsMap.set(username, {
+        id: project.id,
+        username,
+      });
+    }
+  });
+
+  return Array.from(authorsMap.values());
+};
 
 const Footer = () => {
+  const uniqueAuthors = getUniqueAuthors(projects);
+
   return (
     <div className="w-full text-white sm:px-16 px-8 pb-5  pt-7 bg-black dark:bg-purple-500/10 rounded-t-[2rem]">
       <h1 className="py-5 border-b-2 border-purple-800 md:text-3xl text-2xl font-semibold">
         Contributors
       </h1>
       <div className="flex flex-wrap md:justify-start justify-center py-5">
-        <Link
-          href="github.com/"
-          target="_blank"
-          className="aspect-square hover:rotate-3 transition duration-200 m-3 w-36 md:w-48"
-        >
-          <Card isFooterBlurred radius="lg" className="border-none">
-            <Image
-              alt="Woman listing to music"
-              className="object-cover"
-              height={200}
-              src="https://avatars.githubusercontent.com/u/103196610?v=4"
-              width={200}
-            />
-            <CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-              <p className="text-tiny text-white/80">srajankumar</p>
-            </CardFooter>
-          </Card>
-        </Link>
-        <Link
-          href="github.com/"
-          target="_blank"
-          className="aspect-square hover:rotate-3 transition duration-200 m-3 w-36 md:w-48"
-        >
-          <Card isFooterBlurred radius="lg" className="border-none">
-            <Image
-              alt="Woman listing to music"
-              className="object-cover"
-              height={200}
-              src="https://avatars.githubusercontent.com/u/111585606?v=4"
-              width={200}
-            />
-            <CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-              <p className="text-tiny text-white/80">srajankumar</p>
-            </CardFooter>
-          </Card>
-        </Link>
+        {uniqueAuthors.map((author) => (
+          <Link
+            href={`https://github.com/${author.username}`}
+            target="_blank"
+            className="aspect-square hover:rotate-3 transition duration-200 m-3 w-36 md:w-48"
+          >
+            <Card isFooterBlurred radius="lg" className="border-none">
+              <Image
+                alt={author.username}
+                className="object-cover"
+                height={200}
+                src={`https://avatars.githubusercontent.com/${author.username}`}
+                width={200}
+              />
+              <CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+                <p className="text-tiny text-white/80">{author.username}</p>
+              </CardFooter>
+            </Card>
+          </Link>
+        ))}
       </div>
       <div className="flex py-3 items-center font-normal justify-center tracking-wider">
         Made on Earth with{" "}

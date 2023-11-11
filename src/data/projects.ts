@@ -78,7 +78,7 @@ export const projects = [
   },
   {
     id: 8,
-    author: "srajankumar",
+    author: "TejasNayak42",
     title: "E-commerce Platform",
     description: "An online platform for buying and selling products.",
     image: "aaa.png",
