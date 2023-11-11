@@ -9,19 +9,20 @@ export function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  const initialSwitchState =
-    localStorage.getItem("theme") === "light" ? false : true;
-  const [switchChecked, setSwitchChecked] = useState(initialSwitchState);
-
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) {
       setTheme(storedTheme);
-      setSwitchChecked(storedTheme === "dark");
     }
 
     setMounted(true);
   }, [setTheme]);
+
+  const initialSwitchState =
+    typeof window !== "undefined" && localStorage.getItem("theme") === "light"
+      ? false
+      : true;
+  const [switchChecked, setSwitchChecked] = useState(initialSwitchState);
 
   const handleThemeChange = () => {
     const newTheme = theme === "light" ? "dark" : "light";
