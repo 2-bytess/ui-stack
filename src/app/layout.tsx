@@ -5,6 +5,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
@@ -30,6 +31,7 @@ export default function RootLayout({
           <div className="relative my-20 mx-auto max-w-4xl px-6">
             {children}
           </div>
+          <Footer />
         </Providers>
       </body>
     </html>

@@ -13,7 +13,7 @@ import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 export default function App() {
   return (
-    <Navbar className="fixed">
+    <Navbar className="fixed py-2">
       <NavbarBrand>
         <Link href="/">
           <Image src="/assets/ui.svg" alt="ui-library" width={40} height={40} />
