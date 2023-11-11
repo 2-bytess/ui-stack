@@ -16,7 +16,7 @@ export default function App() {
     <Navbar className="fixed py-2">
       <NavbarBrand>
         <Link href="/">
-          <Image src="/assets/ui.svg" alt="ui-library" width={40} height={40} />
+          <Image src="/ui.svg" alt="ui-library" width={40} height={40} />
         </Link>
       </NavbarBrand>
       <NavbarContent justify="end">
@@ -25,7 +25,7 @@ export default function App() {
         </NavbarItem>
         <NavbarItem>
           <Button
-            href="https://github.com/nextui-org/nextui"
+            href="https://github.com/2-bytess/ui-stack"
             as={Link}
             color="secondary"
             showAnchorIcon

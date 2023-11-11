@@ -13,9 +13,32 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "UI Stack",
+  title: {
+    default: "UI Stack",
+    template: `%s - UI Stack`,
+  },
   description:
     "A collection of beautifully designed and delightfully developed projects.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://ui-stack.vercel.app/",
+    title: "UI Stack",
+    siteName: "UI Stack",
+    images: [
+      {
+        url: "https://ui-stack.vercel.app/og.png",
+        width: 1200,
+        height: 630,
+        alt: "UI Stack",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "UI Stack",
+    images: ["https://ui-stack.vercel.app/og.png"],
+  },
 };
 
 export default function RootLayout({

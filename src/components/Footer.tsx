@@ -27,13 +27,14 @@ const Footer = () => {
   const uniqueAuthors = getUniqueAuthors(projects);
 
   return (
-    <div className="w-full text-white sm:px-16 px-8 pb-5  pt-7 bg-black dark:bg-purple-500/10 rounded-t-[2rem]">
+    <footer className="w-full text-white sm:px-16 px-8 pb-5  pt-7 bg-black dark:bg-purple-500/10 rounded-t-[2rem]">
       <h1 className="py-5 border-b-2 border-purple-800 md:text-3xl text-2xl font-semibold">
         Contributors
       </h1>
       <div className="flex flex-wrap md:justify-start justify-center py-5">
         {uniqueAuthors.map((author) => (
           <Link
+            key={author.id}
             href={`https://github.com/${author.username}`}
             target="_blank"
             className="aspect-square hover:rotate-3 transition duration-200 m-3 w-36 md:w-48"
@@ -68,7 +69,7 @@ const Footer = () => {
           />
         </svg>
       </div>
-    </div>
+    </footer>
   );
 };
 

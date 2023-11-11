@@ -46,7 +46,7 @@ const CardComponent: React.FC<CardComponentProps> = ({ projects }) => {
               </div>
             </div>
             <div className="ml-2 text-white flex space-x-3">
-              <Linkk href={project.links.github} className="">
+              <Linkk href={project.links.github} target="_blank">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"
@@ -60,7 +60,7 @@ const CardComponent: React.FC<CardComponentProps> = ({ projects }) => {
                   />
                 </svg>
               </Linkk>
-              <Linkk href={project.links.live} className="">
+              <Linkk href={project.links.live} target="_blank">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"
