@@ -18,8 +18,7 @@ export const metadata: Metadata = {
     default: "UI Stack",
     template: `%s - UI Stack`,
   },
-  description:
-    "A collection of beautifully designed and delightfully developed projects.",
+  description: "A collection of delightfully developed mini-projects.",
   openGraph: {
     type: "website",
     locale: "en_US",
